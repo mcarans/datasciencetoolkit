@@ -1,0 +1,62 @@
+matchonlocationcodeandname: True
+addlocationcode: False
+ignoreblankresponses: True
+ignore0locationcode: False
+alternateadmname: False
+shrinklocationamesifpos: True
+dontaddlocationamesifpos: False
+aggregateatadminlevel: 1
+weightcolumn: "weight"
+weightfunction: "weight"
+
+geojson_inputfile: "fixtures/Uganda_districts2010.geojson"
+geojson_admcode: 
+  - "DNAME_2010"
+geojson_admname:
+  - "DNAME_2010"
+
+csv_inputfile: "fixtures/UG15_hhld.csv"
+csv_inputdelimiter: ","
+csv_admcode:
+  - "id_districtName"
+csv_admname:
+  - "id_districtName"
+
+questions:
+  hh_males: "Number of Males in Household"
+  hh_females: "Number of Females in Household"
+  hh_children: "Number of Children in Household"
+  hh_edu: "Household Education Level"
+  mealsPerDay: "Meals Per Day"
+  house_wall: "House Wall Material"
+  house_lighting: "Type of Lighting"
+  english: "Ability in English"
+  math: "Ability in Mathematics"
+  locallanguage: "Ability in Local Language"
+
+answers:
+  Ability in English:
+    Non- reader: "1-Nothing"
+    Letter: "2-Letter"
+    Word: "3-Word"
+    Paragraph: "4-Paragraph"
+    Story: "5-Story"
+  Ability in Local Language:
+    Non- reader: "1-Nothing"
+    Syllables: "2-Syllables"
+    Word: "3-Word"
+    Paragraph: "4-Paragraph"
+    Story: "5-Story"
+  Ability in Mathematics:
+    Non- numerate: "1-Non Numerate"
+    Matching: "2-Matching"
+    Num Rec. 10 - 99: "3-Numbers"
+    Addition: "4-Addition"
+    Subtraction: "5-Subtraction"
+    Multiplication: "6-Multiplication"
+    Divide: "7-Division"
+
+csv_locations_file: "uganda_hhld_location.csv"
+geojson_locations_file: "locations_uganda.geojson"
+csv_aggregated_file: "resultslearninglevel_uganda.csv"
+errors_outputfile: "errors_uganda.txt"

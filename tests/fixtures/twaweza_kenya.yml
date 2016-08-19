@@ -1,0 +1,76 @@
+matchonlocationcodeandname: True
+addlocationcode: False
+ignoreblankresponses: True
+ignore0locationcode: False
+alternateadmname: True
+shrinklocationamesifpos: True
+dontaddlocationamesifpos: False
+aggregateatadminlevel: 1
+ignoreleadingcharacters: 2
+weightcolumn: "weight"
+weightfunction: "1/weight"
+
+geojson_inputfile: "fixtures/kenya_adm1.geojson"
+geojson_admcode:
+  - "Prov_Pcode"
+#  - "PROVID"
+#  - "DISTID"
+#  - "DISTID"
+geojson_admname:
+  - "PROVINCE"
+#  - "PROVNAME"
+#  - "DISTNAME"
+#  - "DIVNAME"
+
+csv_inputfile: "fixtures/KE15_hhld_processed.csv"
+csv_inputdelimiter: ","
+csv_admcode:
+  - "id_region"
+  - "id_district"
+csv_admname:
+  - "id_regionName"
+  - "id_districtName"
+  - "division_name"
+csv_admnamealt:
+  - "id_regionName"
+  - "county"
+  - "division_name"
+  
+questions:
+  q101_male: "Number of Males in Household"
+  q101_female: "Number of Females in Household"
+  hh_children: "Number of Children in Household"
+  hh_edu: "Household Education Level"
+  mealsPerDay: "Meals Per Day"
+  house_wall: "House Wall Material"
+  house_lighting: "Type of Lighting"
+  english: "Ability in English"
+  math: "Ability in Mathematics"
+  swahili: "Ability in Swahili"
+          
+answers:
+  Ability in English:
+    Nothing: "1-Nothing"
+    Letter: "2-Letter"
+    Word: "3-Word"
+    Paragraph: "4-Paragraph"
+    Story: "5-Story"
+  Ability in Swahili:
+    Hajui: "1-Hajui"
+    Silabi sahili: "2-Silabi Sahili"
+    Neno: "3-Neno"
+    Aya: "4-Aya"
+    Hadithi: "5-Hadithi"
+  Ability in Mathematics:
+    Non Numerate: "1-Non Numerate"
+    Counting: "2-Counting"
+    Numbers: "3-Numbers"
+    Addition: "4-Addition"
+    Subtraction: "5-Subtraction"
+    Multiplication: "6-Multiplication"
+    Divide: "7-Division"
+
+csv_locations_file: "kenya_hhld_location.csv"
+geojson_locations_file: "locations_kenya.geojson"
+csv_aggregated_file: "resultslearninglevel_kenya.csv"
+errors_outputfile: "errors_kenya.txt"

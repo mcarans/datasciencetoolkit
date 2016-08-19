@@ -1,0 +1,72 @@
+matchonlocationcodeandname: False
+addlocationcode: False
+ignoreblankresponses: True
+ignore0locationcode: False
+alternateadmname: False
+shrinklocationamesifpos: True
+dontaddlocationamesifpos: False
+aggregateatadminlevel: 2
+weightcolumn: "weight"
+weightfunction: "weight"
+
+geojson_inputfile: "fixtures/tanzaniaadmin3wardsmapshaper.geojson"
+geojson_admcode:
+  - "Region_Cod"
+  - "District_C"
+  - "Ward_Code"
+geojson_admname:
+  - "Region_Nam"
+  - "District_N"
+  - "Ward_Code"
+
+csv_inputfile: "fixtures/TZ15_hhld_processed.csv"
+csv_inputdelimiter: ","
+csv_admcode:
+  - "regioncode"
+  - "districtcode"
+  - "wardcode"
+csv_admname:
+  - "regionname"
+  - "districtName"
+  - "wardname"
+
+questions:
+  hh_males: "Number of Males in Household"
+  hh_females: "Number of Females in Household"
+  hh_children: "Number of Children in Household"
+  hh_edu: "Household Education Level"
+  mealsPerDay: "Meals Per Day"
+  house_wall: "House Wall Material"
+  house_lighting: "Type of Lighting"
+  english: "Ability in English"
+  math: "Ability in Mathematics"
+  swahili: "Ability in Swahili"
+
+answers:
+  Ability in English:
+    Nothing: "1-Nothing"
+    Letter: "2-Letter"
+    Word: "3-Word"
+    Paragraph: "4-Paragraph"
+    Story: "5-Story"
+  Ability in Swahili:
+    Hajui: "1-Hajui"
+    Silabi sahili: "2-Silabi Sahili"
+    Neno: "3-Neno"
+    Aya: "4-Aya"
+    Hadithi: "5-Hadithi"
+  Ability in Mathematics:
+    Nothing: "1-Nothing"
+    Counting: "2-Counting"
+    Numbers: "3-Numbers"
+    Values: "4-Values"
+    Addition without carrying: "5-Addition without carry"
+    Addition with carrying: "6-Addition with carry"
+    Subtraction_without_carry: "7-Subtraction without carry"
+    Subtraction_with carrying: "8-Subtraction with carry"
+    Multiplication: "9-Multiplication"
+
+csv_locations_file: "tanzania_hhld_location.csv"
+geojson_locations_file: "locations_tanzania.geojson"
+csv_aggregated_file: "resultslearninglevel_tanzania.csv"
+errors_outputfile: "errors_tanzania.txt"
