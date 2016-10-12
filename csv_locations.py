@@ -123,10 +123,10 @@ class CSVLocations:
                 geojson_locationcode = csv_locationcode
             else:
                 csv_locationnamealt = ''
-                geojson_locationcode = self.geojson_locations.locationnametocode.get(csv_locationname.lower())
+                geojson_locationcode = self.geojson_locations.locationnametocode.get(csv_locationname.lower().replace('-', ' '))
                 if self.alternateadmname and not geojson_locationcode:
                     csv_locationnamealt = self.locationcodetonamealt[csv_locationcode]
-                    geojson_locationcode = self.geojson_locations.locationnametocode.get(csv_locationnamealt.lower())
+                    geojson_locationcode = self.geojson_locations.locationnametocode.get(csv_locationnamealt.lower().replace('-', ' '))
                 if geojson_locationcode:
                     geojson_locationname = self.geojson_locations.locationcodetoname[geojson_locationcode]
                     geojson_locationfullname = self.geojson_locations.locationcodetofullname[geojson_locationcode]
@@ -134,19 +134,19 @@ class CSVLocations:
                 else:
                     admname = csv_locationname.split('|')
                     locationadm1admlowestname = '%s|%s' % (admname[0], admname[len(admname)-1])
-                    geojson_locationcode = self.geojson_locations.locationnameadm1admlowesttocode.get(locationadm1admlowestname.lower())
+                    geojson_locationcode = self.geojson_locations.locationnameadm1admlowesttocode.get(locationadm1admlowestname.lower().replace('-', ' '))
                     if self.alternateadmname and not geojson_locationcode:
                         admname = csv_locationnamealt.split('|')
                         locationadm1admlowestnamealt = '%s|%s' % (admname[0], admname[len(admname) - 1])
-                        geojson_locationcode = self.geojson_locations.locationnameadm1admlowesttocode.get(locationadm1admlowestnamealt.lower())
+                        geojson_locationcode = self.geojson_locations.locationnameadm1admlowesttocode.get(locationadm1admlowestnamealt.lower().replace('-', ' '))
                     if geojson_locationcode:
                         geojson_locationname = self.geojson_locations.locationcodetoname[geojson_locationcode]
                         geojson_locationfullname = self.geojson_locations.locationcodetofullname[geojson_locationcode]
                         self.locationcodeadm1admlowestmismatches[csv_locationcode] = (csv_locationname, csv_locationnamealt, geojson_locationcode, geojson_locationfullname)
                     else:
-                        geojson_locationcode = self.geojson_locations.locationnameadm1admswitchtocode.get(locationadm1admlowestname.lower())
+                        geojson_locationcode = self.geojson_locations.locationnameadm1admswitchtocode.get(locationadm1admlowestname.lower().replace('-', ' '))
                         if self.alternateadmname and not geojson_locationcode:
-                            geojson_locationcode = self.geojson_locations.locationnameadm1admswitchtocode.get(locationadm1admlowestnamealt.lower())
+                            geojson_locationcode = self.geojson_locations.locationnameadm1admswitchtocode.get(locationadm1admlowestnamealt.lower().replace('-', ' '))
                         if geojson_locationcode:
                             geojson_locationname = self.geojson_locations.locationcodetoname[geojson_locationcode]
                             geojson_locationfullname = self.geojson_locations.locationcodetofullname[geojson_locationcode]

@@ -1,23 +1,23 @@
+aggregatebylocation: True
 matchonlocationcodeandname: True
 addlocationcode: False
 ignoreblankresponses: True
 ignore0locationcode: False
-alternateadmname: True
+alternateadmname: False
 shrinklocationamesifpos: True
 dontaddlocationamesifpos: False
 aggregateatadminlevel: 1
-ignoreleadingcharacters: 2
 weightcolumn: "weight"
-weightfunction: "1/weight"
+weightfunction: "weight"
 
-geojson_inputfile: "fixtures/kenya_adm1.geojson"
+geojson_inputfile: "fixtures/kenya_counties.geojson"
 geojson_admcode:
-  - "Prov_Pcode"
+  - "HRName"
 #  - "PROVID"
 #  - "DISTID"
 #  - "DISTID"
 geojson_admname:
-  - "PROVINCE"
+  - "HRName"
 #  - "PROVNAME"
 #  - "DISTNAME"
 #  - "DIVNAME"
@@ -25,50 +25,44 @@ geojson_admname:
 csv_inputfile: "fixtures/KE15_hhld_processed.csv"
 csv_inputdelimiter: ","
 csv_admcode:
-  - "id_region"
-  - "id_district"
+  - "County"
 csv_admname:
-  - "id_regionName"
-  - "id_districtName"
-  - "division_name"
-csv_admnamealt:
-  - "id_regionName"
-  - "county"
-  - "division_name"
-  
+  - "County"
+
 questions:
-  q101_male: "Number of Males in Household"
-  q101_female: "Number of Females in Household"
-  hh_children: "Number of Children in Household"
+  no_of_male_level: "Number of Males in Household"
+  no_of_female_level: "Number of Females in Household"
+  no_of_children_level: "Number of Children in Household"
   hh_edu: "Household Education Level"
   mealsPerDay: "Meals Per Day"
   house_wall: "House Wall Material"
   house_lighting: "Type of Lighting"
-  english: "Ability in English"
-  math: "Ability in Mathematics"
-  swahili: "Ability in Swahili"
+  english_compentence: "Ability in English"
+  swahili_compentence: "Ability in Swahili"
+  math_compentence: "Ability in Mathematics"
           
 answers:
+  Number of Males in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Females in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Children in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
   Ability in English:
-    Nothing: "1-Nothing"
-    Letter: "2-Letter"
-    Word: "3-Word"
-    Paragraph: "4-Paragraph"
-    Story: "5-Story"
+    "0": "Not Competent"
+    "1": "Competent"
   Ability in Swahili:
-    Hajui: "1-Hajui"
-    Silabi sahili: "2-Silabi Sahili"
-    Neno: "3-Neno"
-    Aya: "4-Aya"
-    Hadithi: "5-Hadithi"
+    "0": "Not Competent"
+    "1": "Competent"
   Ability in Mathematics:
-    Non Numerate: "1-Non Numerate"
-    Counting: "2-Counting"
-    Numbers: "3-Numbers"
-    Addition: "4-Addition"
-    Subtraction: "5-Subtraction"
-    Multiplication: "6-Multiplication"
-    Divide: "7-Division"
+    "0": "Not Competent"
+    "1": "Competent"
 
 csv_locations_file: "kenya_hhld_location.csv"
 geojson_locations_file: "locations_kenya.geojson"

@@ -18,18 +18,24 @@ logger = logging.getLogger(__name__)
 class CSVAggregation:
     def __init__(self, config: dict):
         self.ignoreblankresponses = config['ignoreblankresponses']
-        self.addlocationcode = config['addlocationcode']
         self.questions = config['questions']
         self.answers = config.get('answers', None)
+        self.aggregatebylocation = config.get('aggregatebylocation', False)
+        if self.aggregatebylocation:
+            self.addlocationcode = config['addlocationcode']
+        else:
+            self.addlocationcode = None
+            self.aggregatelocationname = config['aggregatelocationname']
+
         self.aggregator_list = ['geojson_locationcode']
+        headers = ['Question', 'Location Name', 'Answer', 'Count']
+        self.locationCodeCol = headers.index('Location Name')
         self.weightcolumn = config.get('weightcolumn', None)
         self.weightfunction = config.get('weightfunction', None)
         self.csv_outputfile = config['csv_aggregated_file']
 
-        headers = ['Question', 'Location Name', 'Answer', 'Count']
         self.questionCol = headers.index('Question')
         self.answerCol = headers.index('Answer')
-        self.locationCodeCol = headers.index('Location Name')
         self.countCol = headers.index('Count')
         if self.addlocationcode:
             self.headers = ['Question', 'Location Code', 'Location Name', 'Answer', 'Count']
@@ -38,8 +44,20 @@ class CSVAggregation:
             self.headers = headers
             self.locationNameCol = self.locationCodeCol
 
-        with open(config['csv_locations_file'], 'r') as csvfile:
-            self.contents = list(list(rec) for rec in csv.reader(csvfile))
+        if self.aggregatebylocation:
+            with open(config['csv_locations_file'], 'r') as csvfile:
+                self.contents = list(list(rec) for rec in csv.reader(csvfile))
+        else:
+            with open(config['csv_inputfile'], 'r') as csvfile:
+                self.contents = list(list(rec) + [self.aggregatelocationname, self.aggregatelocationname,
+                                                  self.aggregatelocationname] for rec in csv.reader(csvfile))
+                index = self.findCol(self.aggregatelocationname)
+                self.contents[0][index] = 'geojson_locationcode'
+                self.contents[0][index + 1] = 'geojson_locationname'
+                self.contents[0][index + 2] = 'csv_locationname'
+                for fieldname in self.questions:
+                    index = self.findCol(fieldname)
+                    self.contents[0][index] = self.questions[fieldname]
 
     def findCol(self, question):
         return self.contents[0].index(question)

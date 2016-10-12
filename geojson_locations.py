@@ -62,13 +62,13 @@ class GeoJSONLocations:
                 locationcode = '%s|%s' % (locationcode, admcode[i])
                 locationname = '%s|%s' % (locationname, admname[i])
             self.locationcodetofullname[locationcode] = locationname
-            self.locationnametocode[locationname.lower()] = locationcode
+            self.locationnametocode[locationname.lower().replace('-', ' ')] = locationcode
 
             admlowestname = admname[self.aggregateatadminlevel - 1]
             # Check if the lowest level admin name has been found before with a different location code - if so we must use
             # the full name: admin 1|...admin N. If not, the lowest level admin name is unique and we can use it.
             if self.shrinklocationamesifpos:
-                clashingadmlowest = self.admlowestnametolocationcodename.get(admlowestname.lower())
+                clashingadmlowest = self.admlowestnametolocationcodename.get(admlowestname.lower().replace('-', ' '))
                 if clashingadmlowest and locationcode != clashingadmlowest[0]:
                     self.locationcodetoname[clashingadmlowest[0]] = clashingadmlowest[1]
                     self.locationcodetoname[locationcode] = locationname
@@ -77,14 +77,14 @@ class GeoJSONLocations:
                     self.locationcodetoname[locationcode] = admlowestname
             else:
                 self.locationcodetoname[locationcode] = locationname
-            self.admlowestnametolocationcodename[admlowestname.lower()] = (locationcode, locationname)
+            self.admlowestnametolocationcodename[admlowestname.lower().replace('-', ' ')] = (locationcode, locationname)
             locationadm1admlowestname = '%s|%s' % (admname[0], admlowestname)
-            self.locationnameadm1admlowesttocode[locationadm1admlowestname.lower()] = locationcode
+            self.locationnameadm1admlowesttocode[locationadm1admlowestname.lower().replace('-', ' ')] = locationcode
             admno = len(self.geojson_admname)
             if admno > self.aggregateatadminlevel:
                 admswitch = properties[self.geojson_admname[admno - 1]]
                 locationadm1admswitchname = '%s|%s' % (admname[0], admswitch)
-                self.locationnameadm1admswitchtocode[locationadm1admswitchname.lower()] = locationcode
+                self.locationnameadm1admswitchtocode[locationadm1admswitchname.lower().replace('-', ' ')] = locationcode
         return lowestadminnamesunique
 
     def output_geojson(self, lowestadminnamesunique):

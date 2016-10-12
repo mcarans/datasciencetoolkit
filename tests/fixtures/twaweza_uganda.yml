@@ -1,3 +1,4 @@
+aggregatebylocation: True
 matchonlocationcodeandname: True
 addlocationcode: False
 ignoreblankresponses: True
@@ -15,7 +16,7 @@ geojson_admcode:
 geojson_admname:
   - "DNAME_2010"
 
-csv_inputfile: "fixtures/UG15_hhld.csv"
+csv_inputfile: "fixtures/UG15_hhld_processed.csv"
 csv_inputdelimiter: ","
 csv_admcode:
   - "id_districtName"
@@ -23,38 +24,35 @@ csv_admname:
   - "id_districtName"
 
 questions:
-  hh_males: "Number of Males in Household"
-  hh_females: "Number of Females in Household"
-  hh_children: "Number of Children in Household"
+  no_of_male_level: "Number of Males in Household"
+  no_of_female_level: "Number of Females in Household"
+  no_of_children_level: "Number of Children in Household"
   hh_edu: "Household Education Level"
   mealsPerDay: "Meals Per Day"
   house_wall: "House Wall Material"
   house_lighting: "Type of Lighting"
-  english: "Ability in English"
-  math: "Ability in Mathematics"
-  locallanguage: "Ability in Local Language"
+  english_compentence: "Ability in English"
+  math_compentence: "Ability in Mathematics"
 
 answers:
+  Number of Males in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Females in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Children in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
   Ability in English:
-    Non- reader: "1-Nothing"
-    Letter: "2-Letter"
-    Word: "3-Word"
-    Paragraph: "4-Paragraph"
-    Story: "5-Story"
-  Ability in Local Language:
-    Non- reader: "1-Nothing"
-    Syllables: "2-Syllables"
-    Word: "3-Word"
-    Paragraph: "4-Paragraph"
-    Story: "5-Story"
+    "0": "Not Competent"
+    "1": "Competent"
   Ability in Mathematics:
-    Non- numerate: "1-Non Numerate"
-    Matching: "2-Matching"
-    Num Rec. 10 - 99: "3-Numbers"
-    Addition: "4-Addition"
-    Subtraction: "5-Subtraction"
-    Multiplication: "6-Multiplication"
-    Divide: "7-Division"
+    "0": "Not Competent"
+    "1": "Competent"
 
 csv_locations_file: "uganda_hhld_location.csv"
 geojson_locations_file: "locations_uganda.geojson"

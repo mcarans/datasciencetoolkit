@@ -1,3 +1,10 @@
+csvin: "fixtures/TZ15_hhld_25082016.csv"
+csvout: "fixtures/TZ15_hhld_processed.csv"
+delimiter: ","
+quotes: "\""
+
+
+aggregatebylocation: True
 matchonlocationcodeandname: False
 addlocationcode: False
 ignoreblankresponses: True
@@ -31,40 +38,39 @@ csv_admname:
   - "wardname"
 
 questions:
-  hh_males: "Number of Males in Household"
-  hh_females: "Number of Females in Household"
-  hh_children: "Number of Children in Household"
+  no_of_male_level: "Number of Males in Household"
+  no_of_female_level: "Number of Females in Household"
+  no_of_children_level: "Number of Children in Household"
   hh_edu: "Household Education Level"
   mealsPerDay: "Meals Per Day"
   house_wall: "House Wall Material"
   house_lighting: "Type of Lighting"
-  english: "Ability in English"
-  math: "Ability in Mathematics"
-  swahili: "Ability in Swahili"
+  english_compentence: "Ability in English"
+  swahili_compentence: "Ability in Swahili"
+  math_compentence: "Ability in Mathematics"
 
 answers:
+  Number of Males in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Females in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
+  Number of Children in Household:
+    "1": "0-2 people"
+    "2": "3-4 people"
+    "3": "5+ people"
   Ability in English:
-    Nothing: "1-Nothing"
-    Letter: "2-Letter"
-    Word: "3-Word"
-    Paragraph: "4-Paragraph"
-    Story: "5-Story"
+    "0": "Not Competent"
+    "1": "Competent"
   Ability in Swahili:
-    Hajui: "1-Hajui"
-    Silabi sahili: "2-Silabi Sahili"
-    Neno: "3-Neno"
-    Aya: "4-Aya"
-    Hadithi: "5-Hadithi"
+    "0": "Not Competent"
+    "1": "Competent"
   Ability in Mathematics:
-    Nothing: "1-Nothing"
-    Counting: "2-Counting"
-    Numbers: "3-Numbers"
-    Values: "4-Values"
-    Addition without carrying: "5-Addition without carry"
-    Addition with carrying: "6-Addition with carry"
-    Subtraction_without_carry: "7-Subtraction without carry"
-    Subtraction_with carrying: "8-Subtraction with carry"
-    Multiplication: "9-Multiplication"
+    "0": "Not Competent"
+    "1": "Competent"
 
 csv_locations_file: "tanzania_hhld_location.csv"
 geojson_locations_file: "locations_tanzania.geojson"
